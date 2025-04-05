@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalised Study Notes | Earn Online</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">StudyBoost AI</h1>
+      <a href="#get-started" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-16 px-4 text-center max-w-3xl mx-auto">
+    <h2 class="text-4xl font-extrabold mb-6">Personalised Study Tools and Notes</h2>
+    <p class="text-lg mb-4">Launch your own online business by offering <span class="font-semibold text-blue-600">hyper-personalised study notes and practice sheets</span> to students.</p>
+    <p class="text-lg mb-8">Powered by Experts, your materials are <span class="font-semibold">tailored to each student's needs</span> — making this service highly valuable and important.</p>
+    <a href="#get-started" class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">Start Learning Now</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-white py-16 px-4">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+      <div class="p-6 border rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold mb-2">Hyper-Personalised Notes</h3>
+        <p>Created notes based on student level, exam board, and learning style.</p>
+      </div>
+      <div class="p-6 border rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold mb-2">Made By Top Teachers</h3>
+        <p>Used Experts to create helpful content effortlessly for each student.</p>
+      </div>
+      <div class="p-6 border rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold mb-2">From £5–£20 per Student</h3>
+        <p>Charged per week or month. You can't put a price on success.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Started Section -->
+  <section class="py-16 px-4 bg-blue-50" id="get-started">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Learn Your Subjects?</h2>
+      <p class="mb-6 text-lg">We’ll show you how we do it — from content revision to getting your highest grade.</p>
+      <button onclick="openModal()" class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg hover:bg-blue-700 shadow">Join the Waitlist</button>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-xl max-w-md w-full relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600">&times;</button>
+      <h3 class="text-xl font-bold mb-4">Join the Waitlist</h3>
+      <form id="waitlist-form" class="space-y-3">
+        <input type="text" name="user_name" placeholder="Your Name" required class="w-full px-4 py-2 border rounded" />
+        <input type="email" name="user_email" placeholder="Email Address" required class="w-full px-4 py-2 border rounded" />
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Submit</button>
+      </form>
+      <p id="form-message" class="text-green-600 mt-2 hidden">✅ Submitted successfully!</p>      
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm py-6 text-gray-500">
+    &copy; 2025 StudyBoost AI. All rights reserved.
+  </footer>
+
+  <!-- EmailJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("QPS7ROEmxnwNjnyfg"); // ✅ Your EmailJS public key
+
+    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm('service_7cupzma', 'template_mzzzk9f', this)
+        .then(function() {
+          document.getElementById('form-message').classList.remove('hidden');
+          document.getElementById('waitlist-form').reset();
+        }, function(error) {
+          alert('❌ Failed to send. Try again later.');
+          console.error(error);
+        });
+    });
+
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.getElementById('form-message').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
